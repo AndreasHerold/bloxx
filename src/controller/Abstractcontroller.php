@@ -8,21 +8,29 @@
 
 namespace Bloxx\Controller;
 
+use \Bloxx\Application\Request;
+use \Bloxx\Application\View;
 
 class Abstractcontroller
 {
     /**
-     * @var \Bloxx\Application\Request
+     * @var Request
      */
-    protected $_request;
+    protected $request;
+    /**
+     * @var View
+     */
+    protected $view;
 
     /**
      * AbstractController constructor.
-     * @param \Bloxx\Application\Request $_request
+     * @param Request $request
+     * @param View $view
      */
-    public function __construct(\Bloxx\Application\Request $_request)
+    public function __construct(Request $request, View $view)
     {
-        $this->_request = $_request;
+        $this->request = $request;
+        $this->view = $view;
 
         $this->init();
     }
@@ -32,7 +40,6 @@ class Abstractcontroller
      */
     public function init()
     {
-
     }
 
     /**
@@ -40,7 +47,17 @@ class Abstractcontroller
      */
     public function getRequest()
     {
-        return $this->_request;
+        return $this->request;
+    }
+
+    public function setLayout($name)
+    {
+        $this->view->setLayout($name);
+    }
+
+    public function setActionView($name)
+    {
+        $this->view->setActionView($name);
     }
 
 

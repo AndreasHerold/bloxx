@@ -12,7 +12,7 @@ $autoloader->register();
 
 try {
 	$application = new Bloxx\Application\Application();
-	$application->run();	
+	echo $application->run();
 } catch (Exception $e) {
 	echo "UUpppps. Hier ist wohl ein Fehler aufgetreten.";
 }
