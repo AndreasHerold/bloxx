@@ -8,9 +8,9 @@ class Application
 {
 	public function run()
 	{
-		$request = ;
-		$response = ;
-		$router = ;
-		$dispachter ;
+		$request = "";
+		$response = "";
+		$router = "";
+		$dispachter = "";
 	}
 }

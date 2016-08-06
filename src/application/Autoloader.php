@@ -1,5 +1,4 @@
-﻿<?
-namespace Bloxx\Application;
+﻿<?php
 
 class Autoloader 
 {
