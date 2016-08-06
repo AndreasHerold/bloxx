@@ -13,7 +13,9 @@ class Application
 	{
 		$request = new Request();
 		$response = new Response();
-		$router = new Router();
-		$dispachter = new Dispatcher();
+		//$router = new Router();
+		$dispachter = new Dispatcher($request);
+
+        $dispachter->dispatch();
 	}
 }
