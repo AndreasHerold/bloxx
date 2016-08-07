@@ -27,19 +27,24 @@ class Dispatcher
         $this->view = $view;
     }
 
+    /**
+     * @return string
+     */
     public function dispatch()
     {
         $controllerName = $this->request->getParam('controller', 'index');
-        $controllerName = self::CONTROLLER_NAMESPACE . ucfirst($controllerName);
+        $controllerClass = self::CONTROLLER_NAMESPACE . ucfirst($controllerName);
 
         $actionName = $this->request->getParam('action', 'index');
         $action = ucfirst($actionName) . self::ACTION_KEY;
 
-        $this->view->setActionView($controllerName . DIRECTORY_SEPARATOR . $action);
+        $this->view->setActionView($controllerName . DIRECTORY_SEPARATOR . $actionName);
 
-        $controller = new $controllerName($this->request, $this->view);
+        $controller = new $controllerClass($this->request, $this->view);
+        $controller->preAction();
         $result = $controller->$action();
+        $controller->postAction();
 
-        $this->view->render($result);
+       return $this->view->render($result);
     }
 }

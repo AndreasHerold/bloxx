@@ -10,24 +10,27 @@ class View
 
     protected $viewParams = array();
 
+    protected $actionContent = '';
+
 
     public function render($params)
     {
-        ob_start();
-        include (VIEW_PATH . $this->actionView);
-        $actionContent = ob_get_contents();
-        ob_clean();
+        $this->viewParams = $params;
 
         ob_start();
+        include (VIEW_PATH . $this->actionView . '.phtml');
+        $this->actionContent = ob_get_contents();
+        ob_clean();
+
         include (VIEW_PATH . 'layouts' . DIRECTORY_SEPARATOR . $this->layout . '.phtml');
         $content = ob_get_contents();
-        ob_clean();
-
+        ob_end_clean();
         return $content;
     }
 
     public function __get($name)
     {
+        var_dump($name);
         if (array_key_exists($name, $this->viewParams)) {
             return $this->viewParams[$name];
         }

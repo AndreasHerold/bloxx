@@ -16,7 +16,7 @@ class Autoloader
 		$class = array_pop($namespaceParts);
 		$classPath = implode(DIRECTORY_SEPARATOR, $namespaceParts);
         $file = '..' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . $classPath . DIRECTORY_SEPARATOR . ucfirst($class) . '.php';
-        var_dump($file);
+
         if (file_exists($file)) {
 			require_once $file;
 		}

@@ -38,9 +38,11 @@ class Abstractcontroller
     /**
      *
      */
-    public function init()
-    {
-    }
+    public function init() {}
+
+    public function preAction() {}
+
+    public function postAction() {}
 
     /**
      * @return \Bloxx\Application\Request
